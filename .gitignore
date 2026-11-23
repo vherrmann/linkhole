@@ -1,0 +1,6 @@
+.direnv/
+result
+*.db
+*.db-*
+*.elc
+token.txt
