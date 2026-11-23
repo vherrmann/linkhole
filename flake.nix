@@ -48,8 +48,7 @@
           pname = "the-next-thing";
           inherit version;
           src = ./server;
-          # Replace with the hash reported by the first failing build.
-          vendorHash = lib.fakeHash;
+          vendorHash = "sha256-+0SEqyQd7Mq48yvX8D2+uxC4v1AJW3K/Kde6fp/kL9s=";
           subPackages = [ "cmd/the-next-thing" ];
           env.CGO_ENABLED = "0"; # modernc.org/sqlite is pure Go
           meta.mainProgram = "the-next-thing";

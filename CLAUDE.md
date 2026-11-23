@@ -7,7 +7,7 @@ is the source of truth; Emacs can add links and list/manage them.
 
 Status: server, Emacs package and Android app are implemented and tested (Go tests, ERT, Android unit
 tests, Emacs↔server e2e run by hand). **Not yet verified:** `nix build .#server` / `nix flake check` (the
-sandbox has the Nix store but no `nix` binary) — `vendorHash` in `flake.nix` is still `lib.fakeHash`, and
+sandbox has the Nix store but no `nix` binary) — `vendorHash` in `flake.nix` is set (update it when Go deps change), but
 `nix/module.nix` + the VM test are untested. Keep this file updated as components land.
 
 ## Decisions (from interview with the user)
@@ -103,8 +103,8 @@ module and curls `/healthz` plus an authed add/latest.
 ## Build & test
 - Server: `cd server && go test ./...`; local run:
   `go run ./cmd/the-next-thing -token-file token.txt -db dev.db`, then exercise with curl.
-- Nix: `nix build .#server .#emacs-package`, `nix flake check` (includes the VM test). Fill in
-  `vendorHash` from the first failing build.
+- Nix: `nix build .#server .#emacs-package`, `nix flake check` (includes the VM test). Update
+  `vendorHash` (set `lib.fakeHash`, build, copy the reported hash) after changing Go deps.
 - Emacs: `emacs -Q --batch -f batch-byte-compile emacs/the-next-thing.el` (no warnings) plus ERT
   tests (URL extraction from regions/org links).
 - Emacs tests: `emacs -Q --batch -L emacs -l emacs/test/the-next-thing-test.el -f ert-run-tests-batch-and-exit`.
