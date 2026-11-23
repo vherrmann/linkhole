@@ -1,0 +1,4 @@
+<resources>
+    <style name="Theme.TheNextThing" parent="@android:style/Theme.Material.Light.NoActionBar" />
+    <style name="Theme.TheNextThing.Share" parent="@android:style/Theme.Translucent.NoTitleBar" />
+</resources>
