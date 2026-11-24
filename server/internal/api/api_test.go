@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/vherrmann/the-next-thing/server/internal/store"
-	"github.com/vherrmann/the-next-thing/server/internal/titles"
+	"github.com/vherrmann/linkhole/server/internal/store"
+	"github.com/vherrmann/linkhole/server/internal/titles"
 )
 
 type recorder struct{ jobs []titles.Job }

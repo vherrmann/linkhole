@@ -1,4 +1,4 @@
-package com.vherrmann.thenextthing.data
+package com.vherrmann.linkhole.data
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -12,7 +12,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.vherrmann.thenextthing.sync.SyncWorker
+import com.vherrmann.linkhole.sync.SyncWorker
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.first

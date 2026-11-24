@@ -1,6 +1,6 @@
-package com.vherrmann.thenextthing
+package com.vherrmann.linkhole
 
-import com.vherrmann.thenextthing.data.UrlExtractor
+import com.vherrmann.linkhole.data.UrlExtractor
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test

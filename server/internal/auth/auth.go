@@ -30,7 +30,7 @@ func Middleware(token string, next http.Handler) http.Handler {
 		sum := sha256.Sum256([]byte(got))
 		// Hash both sides so the comparison is constant-time regardless of length.
 		if !ok || subtle.ConstantTimeCompare(sum[:], want[:]) != 1 {
-			w.Header().Set("WWW-Authenticate", `Bearer realm="the-next-thing"`)
+			w.Header().Set("WWW-Authenticate", `Bearer realm="linkhole"`)
 			http.Error(w, `{"error":"unauthorized"}`, http.StatusUnauthorized)
 			return
 		}

@@ -1,16 +1,16 @@
 { self }:
 { config, lib, pkgs, ... }:
 let
-  cfg = config.services.the-next-thing;
+  cfg = config.services.linkhole;
 in
 {
-  options.services.the-next-thing = {
-    enable = lib.mkEnableOption "the-next-thing link queue server";
+  options.services.linkhole = {
+    enable = lib.mkEnableOption "linkhole link queue server";
 
     package = lib.mkOption {
       type = lib.types.package;
       default = self.packages.${pkgs.stdenv.hostPlatform.system}.server;
-      defaultText = lib.literalExpression "the-next-thing flake's packages.server";
+      defaultText = lib.literalExpression "linkhole flake's packages.server";
       description = "The server package to run.";
     };
 
@@ -28,7 +28,7 @@ in
 
     tokenFile = lib.mkOption {
       type = lib.types.path;
-      example = "/run/agenix/the-next-thing-token";
+      example = "/run/agenix/linkhole-token";
       description = ''
         File containing the bearer token. Loaded via systemd LoadCredential,
         so it only needs to be readable by root.
@@ -43,8 +43,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.services.the-next-thing = {
-      description = "the-next-thing link queue";
+    systemd.services.linkhole = {
+      description = "linkhole link queue";
       wantedBy = [ "multi-user.target" ];
       after = [ "network-online.target" ];
       wants = [ "network-online.target" ];
@@ -58,7 +58,7 @@ in
         ];
         LoadCredential = "token:${cfg.tokenFile}";
         DynamicUser = true;
-        StateDirectory = "the-next-thing";
+        StateDirectory = "linkhole";
         Restart = "on-failure";
 
         NoNewPrivileges = true;

@@ -1,10 +1,10 @@
-package com.vherrmann.thenextthing.sync
+package com.vherrmann.linkhole.sync
 
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.vherrmann.thenextthing.App
-import com.vherrmann.thenextthing.data.SyncStatus
+import com.vherrmann.linkhole.App
+import com.vherrmann.linkhole.data.SyncStatus
 
 class SyncWorker(context: Context, params: WorkerParameters) : CoroutineWorker(context, params) {
     override suspend fun doWork(): Result {

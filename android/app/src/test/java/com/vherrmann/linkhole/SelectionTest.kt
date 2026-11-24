@@ -1,7 +1,7 @@
-package com.vherrmann.thenextthing
+package com.vherrmann.linkhole
 
-import com.vherrmann.thenextthing.data.Item
-import com.vherrmann.thenextthing.data.Selection
+import com.vherrmann.linkhole.data.Item
+import com.vherrmann.linkhole.data.Selection
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue

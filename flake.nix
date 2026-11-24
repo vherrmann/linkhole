@@ -1,5 +1,5 @@
 {
-  description = "the-next-thing: self-hosted link queue (Go server, Emacs client, Android app)";
+  description = "linkhole: self-hosted link queue (Go server, Emacs client, Android app)";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
@@ -45,17 +45,17 @@
         androidHome = "${androidSdk}/libexec/android-sdk";
 
         server = pkgs.buildGoModule {
-          pname = "the-next-thing";
+          pname = "linkhole";
           inherit version;
           src = ./server;
           vendorHash = "sha256-+0SEqyQd7Mq48yvX8D2+uxC4v1AJW3K/Kde6fp/kL9s=";
-          subPackages = [ "cmd/the-next-thing" ];
+          subPackages = [ "cmd/linkhole" ];
           env.CGO_ENABLED = "0"; # modernc.org/sqlite is pure Go
-          meta.mainProgram = "the-next-thing";
+          meta.mainProgram = "linkhole";
         };
 
         emacs-package = pkgs.emacsPackages.trivialBuild {
-          pname = "the-next-thing";
+          pname = "linkhole";
           inherit version;
           src = ./emacs;
         };
@@ -70,21 +70,21 @@
 
         checks = lib.optionalAttrs (has ./server && has ./nix/module.nix && pkgs.stdenv.isLinux) {
           vm = pkgs.testers.runNixOSTest {
-            name = "the-next-thing";
+            name = "linkhole";
             nodes.machine =
               { pkgs, ... }:
               {
                 imports = [ self.nixosModules.default ];
-                environment.etc."the-next-thing-token".text = "test-token";
-                services.the-next-thing = {
+                environment.etc."linkhole-token".text = "test-token";
+                services.linkhole = {
                   enable = true;
                   package = self.packages.${system}.server;
-                  tokenFile = "/etc/the-next-thing-token";
+                  tokenFile = "/etc/linkhole-token";
                 };
                 environment.systemPackages = [ pkgs.curl ];
               };
             testScript = ''
-              machine.wait_for_unit("the-next-thing.service")
+              machine.wait_for_unit("linkhole.service")
               machine.wait_for_open_port(8787)
               machine.succeed("curl -sf http://127.0.0.1:8787/healthz")
               machine.fail("curl -sf http://127.0.0.1:8787/api/items")

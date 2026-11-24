@@ -1,10 +1,10 @@
-package com.vherrmann.thenextthing.sync
+package com.vherrmann.linkhole.sync
 
-import com.vherrmann.thenextthing.data.AddRequest
-import com.vherrmann.thenextthing.data.Item
-import com.vherrmann.thenextthing.data.OpType
-import com.vherrmann.thenextthing.data.PendingOp
-import com.vherrmann.thenextthing.data.StateRequest
+import com.vherrmann.linkhole.data.AddRequest
+import com.vherrmann.linkhole.data.Item
+import com.vherrmann.linkhole.data.OpType
+import com.vherrmann.linkhole.data.PendingOp
+import com.vherrmann.linkhole.data.StateRequest
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType

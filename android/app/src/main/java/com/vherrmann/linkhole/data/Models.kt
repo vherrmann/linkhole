@@ -1,4 +1,4 @@
-package com.vherrmann.thenextthing.data
+package com.vherrmann.linkhole.data
 
 import androidx.room.Entity
 import androidx.room.Index

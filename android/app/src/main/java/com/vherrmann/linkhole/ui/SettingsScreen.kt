@@ -1,4 +1,4 @@
-package com.vherrmann.thenextthing.ui
+package com.vherrmann.linkhole.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,8 +24,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import com.vherrmann.thenextthing.data.Settings
-import com.vherrmann.thenextthing.sync.ApiFactory
+import com.vherrmann.linkhole.data.Settings
+import com.vherrmann.linkhole.sync.ApiFactory
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

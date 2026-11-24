@@ -1,12 +1,12 @@
-package com.vherrmann.thenextthing
+package com.vherrmann.linkhole
 
-import com.vherrmann.thenextthing.data.Item
-import com.vherrmann.thenextthing.data.OpType
-import com.vherrmann.thenextthing.data.PendingOp
-import com.vherrmann.thenextthing.sync.ApiFactory
-import com.vherrmann.thenextthing.sync.LocalStore
-import com.vherrmann.thenextthing.sync.SyncEngine
-import com.vherrmann.thenextthing.sync.SyncResult
+import com.vherrmann.linkhole.data.Item
+import com.vherrmann.linkhole.data.OpType
+import com.vherrmann.linkhole.data.PendingOp
+import com.vherrmann.linkhole.sync.ApiFactory
+import com.vherrmann.linkhole.sync.LocalStore
+import com.vherrmann.linkhole.sync.SyncEngine
+import com.vherrmann.linkhole.sync.SyncResult
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer

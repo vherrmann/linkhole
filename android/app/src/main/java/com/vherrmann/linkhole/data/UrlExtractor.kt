@@ -1,4 +1,4 @@
-package com.vherrmann.thenextthing.data
+package com.vherrmann.linkhole.data
 
 object UrlExtractor {
     private val regex = Regex("""https?://[^\s<>"\[\]]+""", RegexOption.IGNORE_CASE)

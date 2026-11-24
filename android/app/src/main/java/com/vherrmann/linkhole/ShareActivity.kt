@@ -1,11 +1,11 @@
-package com.vherrmann.thenextthing
+package com.vherrmann.linkhole
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.lifecycle.lifecycleScope
-import com.vherrmann.thenextthing.data.UrlExtractor
+import com.vherrmann.linkhole.data.UrlExtractor
 import kotlinx.coroutines.launch
 
 /** Receives shared text, queues the first URL in it and finishes without UI. */
@@ -20,7 +20,7 @@ class ShareActivity : ComponentActivity() {
         }
         lifecycleScope.launch {
             val added = (application as App).repo.addUrl(url)
-            val msg = if (added) "Added to The Next Thing" else "Already in The Next Thing"
+            val msg = if (added) "Added to Linkhole" else "Already in Linkhole"
             Toast.makeText(applicationContext, msg, Toast.LENGTH_SHORT).show()
             finish()
         }

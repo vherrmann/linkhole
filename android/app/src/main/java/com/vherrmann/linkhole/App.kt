@@ -1,7 +1,7 @@
-package com.vherrmann.thenextthing
+package com.vherrmann.linkhole
 
 import android.app.Application
-import com.vherrmann.thenextthing.data.Repository
+import com.vherrmann.linkhole.data.Repository
 
 class App : Application() {
     val repo by lazy { Repository(this) }

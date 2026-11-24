@@ -1,4 +1,4 @@
-package com.vherrmann.thenextthing.data
+package com.vherrmann.linkhole.data
 
 import kotlin.random.Random
 

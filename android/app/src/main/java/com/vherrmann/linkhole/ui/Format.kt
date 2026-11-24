@@ -1,10 +1,10 @@
-package com.vherrmann.thenextthing.ui
+package com.vherrmann.linkhole.ui
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
-import com.vherrmann.thenextthing.data.Item
+import com.vherrmann.linkhole.data.Item
 import java.net.URI
 
 fun Item.displayTitle() = title?.takeIf { it.isNotBlank() } ?: url

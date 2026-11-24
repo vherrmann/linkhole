@@ -1,13 +1,13 @@
-package com.vherrmann.thenextthing.ui
+package com.vherrmann.linkhole.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.vherrmann.thenextthing.App
-import com.vherrmann.thenextthing.data.Item
-import com.vherrmann.thenextthing.data.Selection
-import com.vherrmann.thenextthing.data.State
-import com.vherrmann.thenextthing.data.SyncStatus
+import com.vherrmann.linkhole.App
+import com.vherrmann.linkhole.data.Item
+import com.vherrmann.linkhole.data.Selection
+import com.vherrmann.linkhole.data.State
+import com.vherrmann.linkhole.data.SyncStatus
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

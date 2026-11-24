@@ -65,7 +65,7 @@ func (f *Fetcher) get(ctx context.Context, u string) (*http.Response, error) {
 	if err != nil {
 		return nil, err
 	}
-	req.Header.Set("User-Agent", "the-next-thing/1.0 (+title fetcher)")
+	req.Header.Set("User-Agent", "linkhole/1.0 (+title fetcher)")
 	req.Header.Set("Accept", "text/html,application/json;q=0.9,*/*;q=0.5")
 	resp, err := f.Client.Do(req)
 	if err != nil {

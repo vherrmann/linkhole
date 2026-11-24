@@ -1,4 +1,4 @@
-package com.vherrmann.thenextthing.ui
+package com.vherrmann.linkhole.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -38,8 +38,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.vherrmann.thenextthing.data.Item
-import com.vherrmann.thenextthing.data.State
+import com.vherrmann.linkhole.data.Item
+import com.vherrmann.linkhole.data.State
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -1,4 +1,4 @@
-package com.vherrmann.thenextthing.data
+package com.vherrmann.linkhole.data
 
 import android.content.Context
 import androidx.room.Dao
@@ -9,7 +9,7 @@ import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.withTransaction
-import com.vherrmann.thenextthing.sync.LocalStore
+import com.vherrmann.linkhole.sync.LocalStore
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -69,7 +69,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         fun create(context: Context) =
-            Room.databaseBuilder(context, AppDatabase::class.java, "the-next-thing.db").build()
+            Room.databaseBuilder(context, AppDatabase::class.java, "linkhole.db").build()
     }
 }
 

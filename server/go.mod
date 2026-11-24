@@ -1,4 +1,4 @@
-module github.com/vherrmann/the-next-thing/server
+module github.com/vherrmann/linkhole/server
 
 go 1.26.2
 

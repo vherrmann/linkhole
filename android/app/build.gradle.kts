@@ -7,12 +7,12 @@ plugins {
 }
 
 android {
-    namespace = "com.vherrmann.thenextthing"
+    namespace = "com.vherrmann.linkhole"
     compileSdk = 35
     buildToolsVersion = "35.0.0"
 
     defaultConfig {
-        applicationId = "com.vherrmann.thenextthing"
+        applicationId = "com.vherrmann.linkhole"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

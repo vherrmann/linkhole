@@ -1,4 +1,4 @@
-# the-next-thing
+# linkhole
 
 Self-hosted link queue. While going through the org todo inbox, links (YouTube, web, …) are
 pushed to a server. The Android app shows the **most recent unread** link (stable until it is
@@ -26,9 +26,9 @@ sandbox has the Nix store but no `nix` binary) — `vendorHash` in `flake.nix` i
 ## Layout (planned)
 ```
 flake.nix          packages.{server,emacs-package}, nixosModules.default, devShells.default, checks
-nix/module.nix     NixOS module services.the-next-thing
-server/            Go module (cmd/the-next-thing, store, api, titles, auth)
-emacs/the-next-thing.el
+nix/module.nix     NixOS module services.linkhole
+server/            Go module (cmd/linkhole, store, api, titles, auth)
+emacs/linkhole.el
 android/           Kotlin/Compose Gradle project
 README.md
 ```
@@ -63,22 +63,22 @@ All under `/api`, header `Authorization: Bearer <token>`. `/healthz` is unauthen
 - Tests: `httptest` table tests (add/dedupe/latest stability/random/patch/auth), store tests on a
   temp DB, title tests against a local httptest server.
 
-## NixOS module `services.the-next-thing`
+## NixOS module `services.linkhole`
 Options: `enable`, `package`, `listenAddress`, `port`, `tokenFile`, `openFirewall`.
-systemd: `DynamicUser`, `StateDirectory=the-next-thing`, `LoadCredential=token:<tokenFile>` →
+systemd: `DynamicUser`, `StateDirectory=linkhole`, `LoadCredential=token:<tokenFile>` →
 `-token-file $CREDENTIALS_DIRECTORY/token`, hardening (ProtectSystem=strict, NoNewPrivileges, …).
 TLS via the user's nginx/Caddy (example in README). The flake includes a NixOS VM test that boots the
 module and curls `/healthz` plus an authed add/latest.
 
-## Emacs package (`emacs/the-next-thing.el`)
+## Emacs package (`emacs/linkhole.el`)
 - **Built-ins only**: url.el (`url-retrieve`, async), json, tabulated-list, auth-source, org-element.
-- Customs: `the-next-thing-server-url`; token from `auth-source-search :host <server host>`,
-  falling back to the `the-next-thing-token` variable.
+- Customs: `linkhole-server-url`; token from `auth-source-search :host <server host>`,
+  falling back to the `linkhole-token` variable.
 - Commands:
-  - `the-next-thing-add` — prompt for a URL (default: URL at point / kill ring) plus an optional note.
-  - `the-next-thing-add-at-point` — org link at point (`org-element-context`) or `thing-at-point 'url`.
-  - `the-next-thing-add-region` — all URLs/org links in the region; reports added vs duplicates.
-  - `the-next-thing-list` — `*the-next-thing*` tabulated list, columns State · Added · Title · URL.
+  - `linkhole-add` — prompt for a URL (default: URL at point / kill ring) plus an optional note.
+  - `linkhole-add-at-point` — org link at point (`org-element-context`) or `thing-at-point 'url`.
+  - `linkhole-add-region` — all URLs/org links in the region; reports added vs duplicates.
+  - `linkhole-list` — `*linkhole*` tabulated list, columns State · Added · Title · URL.
     Keys: `RET` browse-url, `r` read, `x` uninteresting, `u` unread, `f` cycle filter
     (unread→read→uninteresting→all), `g` refresh, `d` delete (with confirmation).
 - Nix: `emacsPackages.trivialBuild` → `packages.emacs-package`.
@@ -102,12 +102,12 @@ module and curls `/healthz` plus an authed add/latest.
 
 ## Build & test
 - Server: `cd server && go test ./...`; local run:
-  `go run ./cmd/the-next-thing -token-file token.txt -db dev.db`, then exercise with curl.
+  `go run ./cmd/linkhole -token-file token.txt -db dev.db`, then exercise with curl.
 - Nix: `nix build .#server .#emacs-package`, `nix flake check` (includes the VM test). Update
   `vendorHash` (set `lib.fakeHash`, build, copy the reported hash) after changing Go deps.
-- Emacs: `emacs -Q --batch -f batch-byte-compile emacs/the-next-thing.el` (no warnings) plus ERT
+- Emacs: `emacs -Q --batch -f batch-byte-compile emacs/linkhole.el` (no warnings) plus ERT
   tests (URL extraction from regions/org links).
-- Emacs tests: `emacs -Q --batch -L emacs -l emacs/test/the-next-thing-test.el -f ert-run-tests-batch-and-exit`.
+- Emacs tests: `emacs -Q --batch -L emacs -l emacs/test/linkhole-test.el -f ert-run-tests-batch-and-exit`.
 - Android: `nix develop -c ./gradlew assembleDebug testDebugUnitTest` (unit tests: URL extraction,
   latest/random selection, op-queue flush with MockWebServer).
 

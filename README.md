@@ -1,4 +1,4 @@
-# the-next-thing
+# linkhole
 
 Self-hosted link queue. Push links from Emacs, the Android share sheet or curl; the Android
 app shows the newest unread link or a random one, and you mark each *read* or *uninteresting*.
@@ -8,7 +8,7 @@ app shows the newest unread link or a random one, and you mark each *read* or *u
 ```
 cd server && go test ./...
 echo secret > token.txt
-go run ./cmd/the-next-thing -token-file token.txt -db dev.db
+go run ./cmd/linkhole -token-file token.txt -db dev.db
 curl -H 'Authorization: Bearer secret' -d '{"url":"https://example.com"}' localhost:8787/api/items
 ```
 
@@ -20,12 +20,12 @@ unauthenticated `GET /healthz`. Timestamps are unix milliseconds.
 
 ```nix
 {
-  inputs.the-next-thing.url = "github:you/the-next-thing";
+  inputs.linkhole.url = "github:vherrmann/linkhole";
   # ...
-  imports = [ inputs.the-next-thing.nixosModules.default ];
-  services.the-next-thing = {
+  imports = [ inputs.linkhole.nixosModules.default ];
+  services.linkhole = {
     enable = true;
-    tokenFile = config.age.secrets.the-next-thing.path;
+    tokenFile = config.age.secrets.linkhole.path;
   };
   services.nginx.virtualHosts."things.example.org" = {
     enableACME = true;
@@ -38,13 +38,13 @@ unauthenticated `GET /healthz`. Timestamps are unix milliseconds.
 ## Emacs
 
 ```elisp
-(use-package the-next-thing
+(use-package linkhole
   :load-path "path/to/emacs"   ; or packages.emacs-package from the flake
-  :custom (the-next-thing-server-url "https://things.example.org"))
+  :custom (linkhole-server-url "https://things.example.org"))
 ;; token: ~/.authinfo  ->  machine things.example.org password <token>
 ```
 
-Commands: `the-next-thing-add`, `-add-at-point`, `-add-region`, `-list`.
+Commands: `linkhole-add`, `-add-at-point`, `-add-region`, `-list`.
 In the list: `RET` open, `r` read, `x` uninteresting, `u` unread, `f` filter, `g` refresh, `d` delete.
 
 ## Android

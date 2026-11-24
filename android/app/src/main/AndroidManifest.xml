@@ -8,7 +8,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.TheNextThing"
+        android:theme="@style/Theme.Linkhole"
         android:usesCleartextTraffic="true">
 
         <activity
@@ -25,7 +25,7 @@
             android:exported="true"
             android:excludeFromRecents="true"
             android:label="@string/share_label"
-            android:theme="@style/Theme.TheNextThing.Share">
+            android:theme="@style/Theme.Linkhole.Share">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />

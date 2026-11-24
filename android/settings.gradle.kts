@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "the-next-thing"
+rootProject.name = "linkhole"
 include(":app")
